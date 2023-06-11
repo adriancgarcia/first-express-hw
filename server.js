@@ -1,10 +1,10 @@
-require("dotenv").config() 
+// require("dotenv").config() 
 const express = require("express")
-const morgan = require("morgan") // importing the morgan library
-const PORT = process.env.PORT
+// const morgan = require("morgan") // importing the morgan library
+// const PORT = process.env.PORT
 const app = express();
 
-app.use(morgan("dev"))
+// app.use(morgan("dev"))
 
 
 
@@ -14,7 +14,7 @@ app.get("/greeting/Kenzo/", (req, res) => {
 
 app.get("/tip/:total/:tipPercentage/", (req, res) => {
     // const tipPercentage = (x * .01)
-    const tipAmount = ((req.params.tipPercentage / req.params.total) * 100);
+    const tipAmount = (req.params.total / 100) * req.params.tipPercentage;
         console.log(tipAmount)
         res.send("the tip amount is " + tipAmount)
 
@@ -23,6 +23,6 @@ app.get("/tip/:total/:tipPercentage/", (req, res) => {
 
 
 
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`)
+app.listen(3000, () => {
+    console.log(`Listening on port 3000`)
 })
